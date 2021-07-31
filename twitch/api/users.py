@@ -21,7 +21,7 @@ class Users(TwitchAPI):
         response = self._request_get("users/{}".format(user_id))
         return User.construct_from(response)
 
-    def get_users(users):
+    def get_users(self, users):
         response = self._request_get("users?login={}".format(','.join(users)))
         return [User.construct_from(user) for user in response["users"]]
     
