@@ -22,7 +22,7 @@ class Users(TwitchAPI):
         return User.construct_from(response)
 
     def get_users(users):
-        response = self._request_get("users?login={}".format(','.join(users))
+        response = self._request_get("users?login={}".format(','.join(users)))
         return [User.construct_from(user) for user in response["users"]]
     
     @oauth_required
