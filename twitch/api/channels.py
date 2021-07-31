@@ -1,3 +1,5 @@
+import json
+
 from twitch.api.base import TwitchAPI
 from twitch.constants import (
     BROADCAST_TYPE_HIGHLIGHT,
@@ -156,8 +158,10 @@ class Channels(TwitchAPI):
         self._request_delete("channels/{}/community".format(channel_id))
 
     def get_token_by_channel_name(self, channel_name: str):
-        return self._request_get(
-            url="https://api.twitch.tv/api/",
-            path="channels/{}/access_token".format(channel_name)
+        return json.loads(
+            self._request_get(
+                url="https://api.twitch.tv/api/",
+                path="channels/{}/access_token".format(channel_name)
+            )['token']
         )
         
