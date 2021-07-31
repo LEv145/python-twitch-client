@@ -21,6 +21,10 @@ class Users(TwitchAPI):
         response = self._request_get("users/{}".format(user_id))
         return User.construct_from(response)
 
+    def get_users(users):
+        response = self._request_get("users?login={}".format(','.join(users))
+        return [User.construct_from(user) for user in response["users"]]
+    
     @oauth_required
     def get_emotes(self, user_id):
         response = self._request_get("users/{}/emotes".format(user_id))
