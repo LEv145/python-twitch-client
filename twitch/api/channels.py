@@ -158,10 +158,10 @@ class Channels(TwitchAPI):
         self._request_delete("channels/{}/community".format(channel_id))
 
     def get_channel_data_by_name(self, channel_name: str):
-        return json.loads(
+        return Channel.construct_from(
             self._request_get(
                 url="https://api.twitch.tv/api/",
                 path="channels/{}/access_token".format(channel_name)
-            )['token']
+            )
         )
         
