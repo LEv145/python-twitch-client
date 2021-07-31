@@ -157,7 +157,7 @@ class Channels(TwitchAPI):
     def delete_from_community(self, channel_id):
         self._request_delete("channels/{}/community".format(channel_id))
 
-    def get_token_by_channel_name(self, channel_name: str):
+    def get_channel_data_by_name(self, channel_name: str):
         return json.loads(
             self._request_get(
                 url="https://api.twitch.tv/api/",
